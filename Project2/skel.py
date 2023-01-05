@@ -113,7 +113,7 @@ cameraSpeedDash= 20 #19.32
 cameraSpeed = 0
 
 startingSeq = 180 #the intro scene will occupy the first 3 seconds of play time
-
+#Setting up all Key frames of animation
 frame_num_neg_3 = frame_num + 60
 frame_num_neg_2 = frame_num_neg_3 + 60
 frame_num_neg_1 = frame_num_neg_2 + 60
@@ -138,8 +138,11 @@ frame_num_18 = frame_num_17 + 60
 frame_num_19 = frame_num_18 + 60
 frame_num_20 = frame_num_19 + 60
 
+#creating player
 pc = player.Player(width)
 animationNum = "walk"
+
+#setting up jump movement
 jumping = False
 Falling = False
 jumpAmt = 220
@@ -153,7 +156,10 @@ wait = 0 #frames
 #frame 18 is where the camera catches up
 #around 34 frames the camera is on par with mario
 
-#Chun Li
+
+#ANIMATIONS FOR BEGINING PART
+
+#Chun Li animation
 idle1 = pygame.image.load("images\\ChunLi\\idle\\1.png")
 DEFAULT_IMAGE_SIZE = (idle1.get_height() / 3,  width * 0.08)
 idle1 = pygame.transform.scale(pygame.image.load("images\\ChunLi\\idle\\1.png"), DEFAULT_IMAGE_SIZE)
@@ -168,7 +174,7 @@ idleChunRect = pygame.Rect((640 * screenScale) ,height/2, idle1.get_height(), id
 
 
 #---------------
-#Mario
+#Mario animation
 idle1 = pygame.image.load("images\Mario\idle.png")
 DEFAULT_IMAGE_SIZE = (idle1.get_height(),  width * 0.08)
 idle1 = pygame.transform.scale(pygame.image.load("images\Mario\idle.png"), DEFAULT_IMAGE_SIZE)
@@ -193,7 +199,7 @@ idleNaruto = player.animation(playerIdleFrames, playerIdleTimeFrames, True)
 idleNarutoRect = pygame.Rect((1700 * screenScale),height/2, idle1.get_height(), idle1.get_width())
 
 #-------------------------------
-#Spider
+#Spider man animation
 # 200 * Xscale, 180 * Xscale
 idle1 = pygame.image.load("images\\Spiderman\\1.png")
 DEFAULT_IMAGE_SIZE = (idle1.get_height() / 2,  width * 0.08)
@@ -207,6 +213,7 @@ spiderIdleTimeFrames = [12, 9, 12]
 idleSpider = player.animation(spiderIdleFrames, spiderIdleTimeFrames, True)
 idleSpiderRect = pygame.Rect((width - (1800 * screenScale))/2,height/2, idle1.get_height(), idle1.get_width())
 
+#Placement of each character for intro
 xChar = 11
 spiderX = (320 * screenScale) - ((width * 0.08) / 2)
 narutoX = (1600 * screenScale) - ((width * 0.08) / 2)
@@ -217,6 +224,9 @@ text = font.render("Skin Selection", True, (255, 255, 255))
 buttoncolor = (0,255,255)
 
 
+#Animations for moving world parts
+
+#animation for lucky block
 idle1 = pygame.image.load("images\\Objects\\Lucky\\1.png")
 DEFAULT_IMAGE_SIZE = (idle1.get_width(), idle1.get_height())
 idle1 = pygame.transform.scale(pygame.image.load("images\\Objects\\Lucky\\1.png"), DEFAULT_IMAGE_SIZE)
@@ -234,6 +244,8 @@ luckyBlockRects = [pygame.Rect((4650 * Xscale), 590 * Yscale, idle1.get_height()
                    pygame.Rect((4850 * Xscale), 590 * Yscale, idle1.get_height(), idle1.get_width())]
 
 idle1 = pygame.image.load("images\\Objects\\Lucky\\1.png")
+
+#Animation for Coins
 DEFAULT_IMAGE_SIZE = (idle1.get_width(), idle1.get_height())
 idle1 = pygame.transform.scale(pygame.image.load("images\\Objects\\Coin\\1.png"), DEFAULT_IMAGE_SIZE)
 idle2 = pygame.transform.scale(pygame.image.load("images\\Objects\\Coin\\2.png"), DEFAULT_IMAGE_SIZE)
@@ -267,6 +279,7 @@ coinRects = [pygame.Rect((650 * Xscale), 45 * Yscale, idle1.get_height(), idle1.
                    pygame.Rect((17665 * Xscale), 290 * Yscale, idle1.get_height(), idle1.get_width()), 
                    pygame.Rect((17790 * Xscale), 290 * Yscale, idle1.get_height(), idle1.get_width())]
 
+#Animation for Yoshi Coin
 idle1 = pygame.image.load("images\\Objects\\YoshiCoin\\1.png")
 DEFAULT_IMAGE_SIZE = (idle1.get_width(),  idle1.get_height())
 idle1 = pygame.transform.scale(pygame.image.load("images\\Objects\\YoshiCoin\\1.png"), DEFAULT_IMAGE_SIZE)
@@ -278,6 +291,7 @@ yoshi = player.animation(playerIdleFrames, playerIdleTimeFrames, True)
 yoshiRect = [pygame.Rect((1025 * Xscale), -140 * Yscale, idle1.get_width(), idle1.get_height()),
              pygame.Rect((9200 * Xscale), -140 * Yscale, idle1.get_width(), idle1.get_height())]
 
+#Animation for Apples
 idle1 = pygame.image.load("images\\Objects\\Apple\\1.png")
 DEFAULT_IMAGE_SIZE = (idle1.get_width(),  idle1.get_height())
 idle1 = pygame.transform.scale(pygame.image.load("images\\Objects\\Apple\\1.png"), DEFAULT_IMAGE_SIZE)
@@ -297,6 +311,8 @@ appleRect = [pygame.Rect((10 * Xscale), 172 * Yscale, idle1.get_width(), idle1.g
              pygame.Rect((12100 * Xscale), 600 * Yscale, idle1.get_width(), idle1.get_height()),
              pygame.Rect((13400 * Xscale), 700 * Yscale, idle1.get_width(), idle1.get_height()),]
 
+
+#animation for moving bar
 idle1 = pygame.image.load("images\Objects\Bar.png")
 DEFAULT_IMAGE_SIZE = (idle1.get_width(),  idle1.get_height())
 bar = pygame.transform.scale(pygame.image.load("images\Objects\Bar.png"), DEFAULT_IMAGE_SIZE)
@@ -304,6 +320,7 @@ barRect = pygame.Rect((18036 * Xscale), 800 * Yscale, idle1.get_width(), idle1.g
 barDirection = 3
 
 
+#setting up title and screen crawl
 idle1 = pygame.image.load("images\subTitleImage.png")
 DEFAULT_IMAGE_SIZE = (idle1.get_width(),  idle1.get_height())
 titleImage = pygame.transform.scale(pygame.image.load("images\TitleImage.png"), DEFAULT_IMAGE_SIZE)
