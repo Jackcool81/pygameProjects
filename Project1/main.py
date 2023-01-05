@@ -1,3 +1,9 @@
+'''
+This file is the main file for my Midi Visualizer project that utilized Rtmidi inputs 
+and Pygame visual display
+Written by Jack Wagner
+
+'''
 import pygame
 # import pyautogui
 from pygame.locals import *
@@ -9,12 +15,17 @@ import mido
 import rtmidi
 import os
 directory_path = os.getcwd()
-# WIDTH = int(input("Please Enter Screen Width (ex 640) "))
-# HEIGHT = int(input("Please Enter Screen Height (ex 480) "))
-# NOTE_WIDTH = int(input("Please Enter space between notes (ex 8) "))
+
 WIDTH = 640
 HEIGHT = 480
 NOTE_WIDTH = 8
+
+
+#Set up Screen and Midi Device
+
+# WIDTH = int(input("Please Enter Screen Width (ex 640) "))
+# HEIGHT = int(input("Please Enter Screen Height (ex 480) "))
+# NOTE_WIDTH = int(input("Please Enter space between notes (ex 8) "))
 print("Do you have a midi device plugged in? Yes (1) No (2)")
 midi_in = input("1/2 ")
 if (midi_in == "1"):
@@ -28,21 +39,33 @@ else:
 red = (255,0,0) 
 yellow = (255, 255, 0)
 #blue = (0,0,255)
-#SCALING
+
+
+#SCALING notes so that it fits well on the screen
 MIDDLE_SCREEN = WIDTH / 2
 if WIDTH > 640:
     direction = 1
 else:
     direction = 1
+
+
 pygame.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("test")
 screen.fill((0,0,0))
+
+#creating colors for notes
 red1 = pygame.Vector3(255, 0, 0)
 yellow1 = pygame.Vector3(255,255,0)
 blue = pygame.Vector3(0,0,255)
-lerpcolor = pygame.math.Vector3.lerp(red1, yellow1, 0.5)
+lerpcolor = pygame.math.Vector3.lerp(red1, yellow1, 0.5) #combines colors together
 color = (lerpcolor.x, lerpcolor.y, lerpcolor.z)
+
+
+
+#Render function
+#Description: Takes all the current chapes on the map and moves them accordingly
+#so that the last note of input you press shows up in the middle of the screen
 def render(cameraX):
     if bool(shapes) == True and shapes[-1].getX() != MIDDLE_SCREEN:
         screen.fill((0,0,0))
@@ -66,6 +89,8 @@ def render(cameraX):
         for shape in shapes:
             shape.render()
         return cameraX
+
+
 #circle.changeColor()
 shaper = False
 shapes = [] #move these opp of eachother
@@ -82,6 +107,8 @@ clock = pygame.time.Clock()
 note = [""] * 127
 
 countextra = 0 
+
+#Main While Loop
 while True:
     for msg in MidiFile('simpl.mid').play():
         if countextra < 2: 
