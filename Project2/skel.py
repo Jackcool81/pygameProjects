@@ -8,7 +8,7 @@ from pygame.locals import *
 from sys import exit
 import random
 import time
-import player
+import animationObjects
 # record the start time
 start_time = time.time()
 
@@ -139,7 +139,7 @@ frame_num_19 = frame_num_18 + 60
 frame_num_20 = frame_num_19 + 60
 
 #creating player
-pc = player.Player(width)
+pc = animationObjects.Player(width)
 animationNum = "walk"
 
 #setting up jump movement
@@ -169,7 +169,7 @@ idle3 = pygame.transform.scale(pygame.image.load("images\\ChunLi\\idle\\3.png"),
 chunIdleFrames = [idle1, idle2, idle3]
 # Scale the image to your needed size
 chunIdleTimeFrames = [12, 9, 12]
-idleChun = player.animation(chunIdleFrames, chunIdleTimeFrames, True)
+idleChun = animationObjects.animation(chunIdleFrames, chunIdleTimeFrames, True)
 idleChunRect = pygame.Rect((640 * screenScale) ,height/2, idle1.get_height(), idle1.get_width())
 
 
@@ -182,7 +182,7 @@ idle1 = pygame.transform.scale(pygame.image.load("images\Mario\idle.png"), DEFAU
 marioIdleFrames = [idle1]
 # Scale the image to your needed size
 marioIdleTimeFrames = [12]
-idleMario = player.animation(marioIdleFrames, marioIdleTimeFrames, True)
+idleMario = animationObjects.animation(marioIdleFrames, marioIdleTimeFrames, True)
 idleMarioRect = pygame.Rect((960 * screenScale) - idle1.get_width(),height/2, idle1.get_height(), idle1.get_width())
 
 #-------------------------------
@@ -195,7 +195,7 @@ idle4 = pygame.transform.scale(pygame.image.load("images\\Naruto\\Idle\\px1080\\
 playerIdleFrames = [idle1, idle2, idle3, idle4]
 # Scale the image to your needed size
 playerIdleTimeFrames = [7, 7, 7, 7]
-idleNaruto = player.animation(playerIdleFrames, playerIdleTimeFrames, True)
+idleNaruto = animationObjects.animation(playerIdleFrames, playerIdleTimeFrames, True)
 idleNarutoRect = pygame.Rect((1700 * screenScale),height/2, idle1.get_height(), idle1.get_width())
 
 #-------------------------------
@@ -210,7 +210,7 @@ idle3 = pygame.transform.scale(pygame.image.load("images\\Spiderman\\3.png"), DE
 spiderIdleFrames = [idle1, idle2, idle3]
 # Scale the image to your needed size
 spiderIdleTimeFrames = [12, 9, 12]
-idleSpider = player.animation(spiderIdleFrames, spiderIdleTimeFrames, True)
+idleSpider = animationObjects.animation(spiderIdleFrames, spiderIdleTimeFrames, True)
 idleSpiderRect = pygame.Rect((width - (1800 * screenScale))/2,height/2, idle1.get_height(), idle1.get_width())
 
 #Placement of each character for intro
@@ -236,7 +236,7 @@ idle4 = pygame.transform.scale(pygame.image.load("images\\Objects\\Lucky\\4.png"
 playerIdleFrames = [idle1, idle2, idle3, idle4]
 # Scale the image to your needed size
 playerIdleTimeFrames = [20, 20, 20, 20]
-lucky = player.animation(playerIdleFrames, playerIdleTimeFrames, True)
+lucky = animationObjects.animation(playerIdleFrames, playerIdleTimeFrames, True)
 
 
 luckyBlockRects = [pygame.Rect((4650 * Xscale), 590 * Yscale, idle1.get_height(), idle1.get_width()), 
@@ -254,7 +254,7 @@ idle4 = pygame.transform.scale(pygame.image.load("images\\Objects\\Coin\\4.png")
 playerIdleFrames = [idle1, idle2, idle3, idle4]
 # Scale the image to your needed size
 playerIdleTimeFrames = [128, 128, 128, 128]
-coin = player.animation(playerIdleFrames, playerIdleTimeFrames, True)
+coin = animationObjects.animation(playerIdleFrames, playerIdleTimeFrames, True)
 
 
 
@@ -287,7 +287,7 @@ idle2 = pygame.transform.scale(pygame.image.load("images\\Objects\\YoshiCoin\\2.
 playerIdleFrames = [idle1, idle2]
 # Scale the image to your needed size
 playerIdleTimeFrames = [32, 32]
-yoshi = player.animation(playerIdleFrames, playerIdleTimeFrames, True)
+yoshi = animationObjects.animation(playerIdleFrames, playerIdleTimeFrames, True)
 yoshiRect = [pygame.Rect((1025 * Xscale), -140 * Yscale, idle1.get_width(), idle1.get_height()),
              pygame.Rect((9200 * Xscale), -140 * Yscale, idle1.get_width(), idle1.get_height())]
 
@@ -302,7 +302,7 @@ idle4 = pygame.transform.scale(pygame.image.load("images\\Objects\\Apple\\4.png"
 playerIdleFrames = [idle1, idle2, idle1, idle3, idle4]
 # Scale the image to your needed size
 playerIdleTimeFrames = [64, 64, 64, 64, 64]
-apple = player.animation(playerIdleFrames, playerIdleTimeFrames, True)
+apple = animationObjects.animation(playerIdleFrames, playerIdleTimeFrames, True)
 appleRect = [pygame.Rect((10 * Xscale), 172 * Yscale, idle1.get_width(), idle1.get_height()),
              pygame.Rect((5080 * Xscale), 700 * Yscale, idle1.get_width(), idle1.get_height()),
              pygame.Rect((7800 * Xscale), 700 * Yscale, idle1.get_width(), idle1.get_height()),
@@ -667,7 +667,7 @@ for i in range(0, 20*60): # 20*60 frames is 20 seconds
             currRarity = rarity1
         if frame_num > frame_num_neg_2 + 20:
             
-            idleNaruto = player.animation(playerIdleFrames, playerIdleTimeFrames, True)
+            idleNaruto = animationObjects.animation(playerIdleFrames, playerIdleTimeFrames, True)
         
         titleY = titleY + (10 * Yscale)
         subTitleY = subTitleY + (10 * Yscale)
